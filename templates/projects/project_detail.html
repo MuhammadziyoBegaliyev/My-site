@@ -1,0 +1,446 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ project.title }} | Muhammadziyo Loyihasi{% endblock %}
+
+{% block meta_description %}{{ project.description|truncatechars:150 }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb bg-light p-3 rounded">
+            <li class="breadcrumb-item">
+                <a href="/" class="text-decoration-none text-primary">
+                    <i class="fas fa-home me-1"></i> Bosh sahifa
+                </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'projects:project_list' %}" class="text-decoration-none text-primary">
+                    <i class="fas fa-project-diagram me-1"></i> Loyihalar
+                </a>
+            </li>
+            <li class="breadcrumb-item active text-dark" aria-current="page">
+                <i class="fas fa-code me-1"></i> {{ project.title|truncatechars:30 }}
+            </li>
+        </ol>
+    </nav>
+
+    <!-- Project Header -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="text-center mb-4">
+                {% if project.category %}
+                <span class="badge bg-primary rounded-pill px-3 py-2 mb-2">
+                    <i class="fas fa-tag me-1"></i> {{ project.category }}
+                </span>
+                {% endif %}
+                <h1 class="display-5 fw-bold mb-3">{{ project.title }}</h1>
+                <div class="d-flex justify-content-center align-items-center gap-3 text-muted mb-4">
+                    <span class="d-flex align-items-center">
+                        <i class="far fa-calendar me-1"></i>
+                        {{ project.created_at|date:"d F, Y" }}
+                    </span>
+                    {% if project.updated_at %}
+                    <span class="d-flex align-items-center">
+                        <i class="fas fa-history me-1"></i>
+                        Yangilangan: {{ project.updated_at|date:"d.m.Y" }}
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-5">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Project Image -->
+            {% if project.image %}
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-5">
+                <img src="{{ project.image.url }}" 
+                     class="card-img-top project-image" 
+                     alt="{{ project.title }}"
+                     style="max-height: 500px; object-fit: cover;">
+                <div class="card-img-overlay d-flex align-items-end">
+                    <span class="badge bg-dark bg-opacity-75 text-white px-3 py-2 rounded-pill">
+                        <i class="fas fa-image me-1"></i> Loyiha rasmi
+                    </span>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Project Description -->
+            <div class="card border-0 shadow-sm rounded-4 mb-5">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
+                            <i class="fas fa-info-circle text-primary fa-lg"></i>
+                        </div>
+                        <h3 class="mb-0">Loyiha haqida</h3>
+                    </div>
+                    
+                    <div class="project-description">
+                        {{ project.description|linebreaks }}
+                    </div>
+
+                    {% if project.features %}
+                    <div class="mt-5">
+                        <h4 class="mb-4">
+                            <i class="fas fa-star text-warning me-2"></i>
+                            Asosiy xususiyatlar
+                        </h4>
+                        <div class="row g-3">
+                            {% for feature in project.features.splitlines %}
+                            {% if feature.strip %}
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-check-circle text-success mt-1 me-3"></i>
+                                    <span>{{ feature.strip }}</span>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Challenges & Solutions -->
+            {% if project.challenges or project.solution %}
+            <div class="card border-0 shadow-sm rounded-4 mb-5">
+                <div class="card-body p-4 p-lg-5">
+                    <h3 class="mb-4">
+                        <i class="fas fa-puzzle-piece text-primary me-2"></i>
+                        Muammolar va Yechimlar
+                    </h3>
+                    
+                    {% if project.challenges %}
+                    <div class="mb-4">
+                        <h5 class="text-danger mb-3">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Qiyinchiliklar
+                        </h5>
+                        <div class="bg-light p-4 rounded-3">
+                            {{ project.challenges|linebreaks }}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if project.solution %}
+                    <div>
+                        <h5 class="text-success mb-3">
+                            <i class="fas fa-lightbulb me-2"></i>
+                            Mening yechimim
+                        </h5>
+                        <div class="bg-success bg-opacity-10 p-4 rounded-3">
+                            {{ project.solution|linebreaks }}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Technologies Card -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-info bg-opacity-10 rounded-circle p-3 me-3">
+                            <i class="fas fa-code text-info fa-lg"></i>
+                        </div>
+                        <h4 class="mb-0">Texnologiyalar</h4>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+                        {% if project.technologies %}
+                            {% for tech in project.technologies.split %}
+                            <span class="badge bg-gradient-tech py-2 px-3 rounded-pill">
+                                <i class="fas fa-cog me-1"></i> {{ tech }}
+                            </span>
+                            {% endfor %}
+                        {% else %}
+                            <span class="text-muted">Texnologiyalar ko'rsatilmagan</span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Tech Progress Bars -->
+                    {% if project.technologies %}
+                        <div class="mt-4">
+                            <h6 class="mb-3">Texnologiya o'zlashtirish:</h6>
+                            {% with "Python Django PostgreSQL Docker Git" as tech_stack %}
+                                {% for tech in tech_stack.split %}
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="small">{{ tech }}</span>
+                                            <span class="small">{% widthratio forloop.counter 5 100 %}%</span>
+                                        </div>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar bg-primary" 
+                                            role="progressbar" 
+                                            {% with tech_levels="Python:90,Django:85,PostgreSQL:80,Docker:70,Git:85" %}
+                                            aria-valuenow="{% widthratio forloop.counter 5 100 %}" 
+                                            aria-valuemin="0" 
+                                            aria-valuemax="100">
+                                        </div>
+
+                                        </div>
+                                    </div>
+                                    {% endwith %}
+                                {% endfor %}
+                            {% endwith %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Links Card -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-success bg-opacity-10 rounded-circle p-3 me-3">
+                            <i class="fas fa-link text-success fa-lg"></i>
+                        </div>
+                        <h4 class="mb-0">Havolalar</h4>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        {% if project.project_url %}
+                        <a href="{{ project.project_url }}" 
+                           target="_blank" 
+                           class="btn btn-primary btn-lg d-flex align-items-center justify-content-center py-3">
+                            <i class="fas fa-external-link-alt me-3 fa-lg"></i>
+                            <span>Demo sahifani ko'rish</span>
+                        </a>
+                        {% endif %}
+                        
+                        {% if project.github_url %}
+                        <a href="{{ project.github_url }}" 
+                           target="_blank" 
+                           class="btn btn-dark btn-lg d-flex align-items-center justify-content-center py-3">
+                            <i class="fab fa-github me-3 fa-lg"></i>
+                            <span>GitHub kodlari</span>
+                        </a>
+                        {% endif %}
+                        
+                        {% if project.video_url %}
+                        <a href="{{ project.video_url }}" 
+                           target="_blank" 
+                           class="btn btn-danger btn-lg d-flex align-items-center justify-content-center py-3">
+                            <i class="fab fa-youtube me-3 fa-lg"></i>
+                            <span>Video demo</span>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Stats -->
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-warning bg-opacity-10 rounded-circle p-3 me-3">
+                            <i class="fas fa-chart-line text-warning fa-lg"></i>
+                        </div>
+                        <h4 class="mb-0">Loyiha statistikasi</h4>
+                    </div>
+                    
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="text-center p-3 bg-light rounded-3">
+                                <div class="display-6 fw-bold text-primary mb-1">
+                                    {% if project.complexity %}{{ project.complexity }}{% else %}5{% endif %}
+                                </div>
+                                <div class="small text-muted">Murakkablik</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="text-center p-3 bg-light rounded-3">
+                                <div class="display-6 fw-bold text-success mb-1">
+                                    {% if project.duration %}{{ project.duration }}{% else %}3{% endif %}
+                                </div>
+                                <div class="small text-muted">Oylar</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Share Buttons -->
+                    <div class="mt-4 pt-3 border-top">
+                        <h6 class="mb-3">Ulashish:</h6>
+                        <div class="d-flex gap-2">
+                            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ project.title }}" 
+                               target="_blank"
+                               class="btn btn-outline-primary btn-sm flex-fill">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}&text={{ project.title }}" 
+                               target="_blank"
+                               class="btn btn-outline-info btn-sm flex-fill">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" 
+                               target="_blank"
+                               class="btn btn-outline-primary btn-sm flex-fill">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Projects -->
+    {% if related_projects %}
+    <div class="mt-5 pt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="mb-0">
+                <i class="fas fa-random text-primary me-2"></i>
+                Tegishli loyihalar
+            </h3>
+            <a href="{% url 'projects:project_list' %}" class="btn btn-outline-primary">
+                Barchasini ko'rish <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+        
+        <div class="row g-4">
+            {% for related in related_projects|slice:":3" %}
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 hover-lift">
+                    {% if related.image %}
+                    <img src="{{ related.image.url }}" 
+                         class="card-img-top" 
+                         alt="{{ related.title }}"
+                         style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ related.title }}</h5>
+                        <p class="card-text text-muted small">{{ related.description|truncatechars:100 }}</p>
+                        <a href="{% url 'projects:project_detail' related.pk %}" 
+                           class="btn btn-sm btn-outline-primary">
+                            Ko'rish <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Navigation Buttons -->
+    <div class="mt-5 pt-4">
+        <div class="d-flex justify-content-between">
+            {% if previous_project %}
+            <a href="{% url 'projects:project_detail' previous_project.pk %}" 
+               class="btn btn-outline-primary d-flex align-items-center">
+                <i class="fas fa-arrow-left me-2"></i>
+                Oldingi loyiha
+            </a>
+            {% else %}
+            <div></div>
+            {% endif %}
+            
+            <a href="{% url 'projects:project_list' %}" class="btn btn-primary">
+                <i class="fas fa-th-list me-2"></i>
+                Barcha loyihalar
+            </a>
+            
+            {% if next_project %}
+            <a href="{% url 'projects:project_detail' next_project.pk %}" 
+               class="btn btn-outline-primary d-flex align-items-center">
+                Keyingi loyiha
+                <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+            {% else %}
+            <div></div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .project-image {
+        transition: transform 0.3s ease;
+    }
+    
+    .project-image:hover {
+        transform: scale(1.02);
+    }
+    
+    .project-description {
+        line-height: 1.8;
+        font-size: 1.1rem;
+    }
+    
+    .project-description p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .bg-gradient-tech {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+    
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    }
+    
+    .breadcrumb {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .progress-bar {
+        border-radius: 3px;
+    }
+</style>
+
+<script>
+    // Add scroll animation for elements
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate progress bars
+        const progressBars = document.querySelectorAll('.progress-bar');
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+                bar.style.width = width;
+                bar.style.transition = 'width 1.5s ease-in-out';
+            }, 300);
+        });
+        
+        // Add image zoom on click
+        const projectImage = document.querySelector('.project-image');
+        if (projectImage) {
+            projectImage.addEventListener('click', function() {
+                this.classList.toggle('zoomed');
+            });
+        }
+        
+        // Copy URL to clipboard
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    const tooltip = new bootstrap.Tooltip(this, {
+                        title: 'URL nusxalandi!',
+                        trigger: 'manual'
+                    });
+                    tooltip.show();
+                    setTimeout(() => tooltip.hide(), 2000);
+                });
+            });
+        });
+    });
+</script>
+{% endblock %}

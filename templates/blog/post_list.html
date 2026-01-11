@@ -1,0 +1,685 @@
+{% extends 'base.html' %}
+
+{% block title %}Texnologiya Blogi | Muhammadziyo - Django, Python, Aiogram{% endblock %}
+
+{% block meta_description %}Python, Django, REST API, Aiogram va zamonaviy texnologiyalar haqida professional maqolalar, darsliklar va fikrlar.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="blog-hero bg-gradient-primary text-white py-5 mb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="mb-4">
+                    <span class="badge bg-white text-primary rounded-pill px-4 py-2 mb-3">
+                        <i class="fas fa-book-open me-2"></i> {{ posts.count }} ta maqola
+                    </span>
+                    <h1 class="display-4 fw-bold mb-3">Texnologiya Blogi</h1>
+                    <p class="lead mb-4">
+                        Python ekotizimi, Django framework, Aiogram va zamonaviy web texnologiyalari haqida 
+                        eng so'nggi ma'lumotlar, darsliklar va tajribalarim.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-white bg-opacity-25 rounded-pill px-3 py-2">
+                            <i class="fab fa-python me-1"></i> Python
+                        </span>
+                        <span class="badge bg-white bg-opacity-25 rounded-pill px-3 py-2">
+                            <i class="fas fa-server me-1"></i> Django
+                        </span>
+                        <span class="badge bg-white bg-opacity-25 rounded-pill px-3 py-2">
+                            <i class="fas fa-plug me-1"></i> REST API
+                        </span>
+                        <span class="badge bg-white bg-opacity-25 rounded-pill px-3 py-2">
+                            <i class="fas fa-robot me-1"></i> Aiogram
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    <div class="blog-hero-icon bg-white bg-opacity-25 rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 150px; height: 150px;">
+                        <i class="fas fa-laptop-code fa-4x"></i>
+                    </div>
+                    <p class="mb-0">
+                        Har bir dasturchi o'z bilimini baham ko'rishi kerak
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row g-5">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Featured Post -->
+            {% if featured_posts %}
+            <div class="featured-post mb-5">
+                <h2 class="mb-4">
+                    <i class="fas fa-star text-warning me-2"></i>
+                    Tanlangan Maqolalar
+                </h2>
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                    {% for post in featured_posts|slice:":1" %}
+                    <div class="row g-0">
+                        <div class="col-md-6">
+                            {% if post.image %}
+                            <img src="{{ post.image.url }}" class="img-fluid h-100" alt="{{ post.title }}" style="object-fit: cover;">
+                            {% else %}
+                            <div class="bg-gradient-primary h-100 d-flex align-items-center justify-content-center">
+                                <i class="fas fa-newspaper fa-4x text-white"></i>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body p-4 p-lg-5">
+                                <div class="mb-3">
+                                    {% if post.category %}
+                                    <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-1">
+                                        {{ post.category.name }}
+                                    </span>
+                                    {% endif %}
+                                </div>
+                                <h3 class="card-title h2 mb-3">
+                                    <a href="{% url 'blog:post_detail' post.pk %}" class="text-decoration-none text-dark">
+                                        {{ post.title }}
+                                    </a>
+                                </h3>
+                                <p class="card-text mb-4">{{ post.excerpt|default:post.content|striptags|truncatechars:150 }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-sm bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-2">
+                                            <i class="fas fa-user text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <div class="small fw-medium">Muhammadziyo</div>
+                                            <div class="small text-muted">{{ post.created_at|date:"d F, Y" }}</div>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'blog:post_detail' post.pk %}" class="btn btn-primary">
+                                        O'qish <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Search and Filter -->
+            <div class="blog-filters mb-5">
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-filter text-primary me-2"></i>
+                                    Filtrlash
+                                </h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex flex-wrap gap-2 justify-content-md-end">
+                                    <select class="form-select form-select-sm w-auto" id="categoryFilter">
+                                        <option value="">Barcha kategoriyalar</option>
+                                        {% for category in categories %}
+                                        <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <select class="form-select form-select-sm w-auto" id="sortFilter">
+                                        <option value="newest">Yangi postlar</option>
+                                        <option value="oldest">Eski postlar</option>
+                                        <option value="popular">Mashhurlari</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Posts Grid -->
+            <div id="postsContainer">
+                <div class="row g-4" id="postsGrid">
+                    {% for post in posts %}
+                    <div class="col-md-6 post-card" 
+                         data-category="{{ post.category.id|default:'' }}"
+                         data-created="{{ post.created_at|date:'U' }}">
+                        <div class="card border-0 shadow-sm h-100 hover-lift">
+                            <!-- Post Image -->
+                            {% if post.image %}
+                            <div class="position-relative overflow-hidden rounded-top" style="height: 200px;">
+                                <img src="{{ post.image.url }}" 
+                                     class="card-img-top" 
+                                     alt="{{ post.title }}"
+                                     style="height: 100%; object-fit: cover;">
+                                <div class="position-absolute top-0 start-0 m-3">
+                                    {% if post.category %}
+                                    <span class="badge bg-primary bg-opacity-75 text-white rounded-pill px-3 py-1">
+                                        {{ post.category.name }}
+                                    </span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="bg-gradient-primary text-white rounded-top" style="height: 200px;">
+                                <div class="h-100 d-flex flex-column align-items-center justify-content-center p-4">
+                                    <i class="fas fa-newspaper fa-3x mb-3"></i>
+                                    <h5 class="mb-0 text-center">{{ post.title|truncatechars:40 }}</h5>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            <!-- Card Body -->
+                            <div class="card-body p-4">
+                                <h5 class="card-title mb-3">
+                                    <a href="{% url 'blog:post_detail' post.pk %}" 
+                                       class="text-decoration-none text-dark">
+                                        {{ post.title }}
+                                    </a>
+                                </h5>
+                                
+                                <p class="card-text text-muted mb-4">
+                                    {{ post.excerpt|default:post.content|striptags|truncatechars:120 }}
+                                </p>
+                                
+                                <!-- Tags -->
+                                {% if post.tags %}
+                                <div class="mb-4">
+                                    <div class="d-flex flex-wrap gap-1">
+                                        {% for tag in post.tags.split|slice:":3" %}
+                                        <span class="badge bg-light text-dark border py-1 px-2">
+                                            #{{ tag }}
+                                        </span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endif %}
+                                
+                                <!-- Meta Info -->
+                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="far fa-calendar text-muted me-2"></i>
+                                        <small class="text-muted">{{ post.created_at|date:"d.m.Y" }}</small>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <i class="far fa-clock text-muted me-2"></i>
+                                        <small class="text-muted">
+                                            {% widthratio post.content|wordcount 200 1 %} min
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Read More Button -->
+                            <div class="card-footer bg-transparent border-0 pt-0">
+                                <a href="{% url 'blog:post_detail' post.pk %}" 
+                                   class="btn btn-outline-primary w-100">
+                                    <i class="fas fa-book-reader me-2"></i> Maqolani o'qish
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <!-- Empty State -->
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm rounded-4">
+                            <div class="card-body p-5 text-center">
+                                <div class="empty-state-icon mb-4">
+                                    <i class="fas fa-newspaper fa-4x text-muted"></i>
+                                </div>
+                                <h4 class="mb-3">Hali maqolalar mavjud emas</h4>
+                                <p class="text-muted mb-4">
+                                    Tez orada yangi maqolalar bilan to'ldiraman. Kuting!
+                                </p>
+                                <a href="/" class="btn btn-primary">
+                                    <i class="fas fa-home me-2"></i> Bosh sahifaga qaytish
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Load More Button -->
+                {% if posts.has_next %}
+                <div class="text-center mt-5">
+                    <button class="btn btn-primary btn-lg px-5" id="loadMore">
+                        <i class="fas fa-spinner fa-spin d-none me-2"></i>
+                        <span>Ko'proq maqola yuklash</span>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Search Widget -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-3">
+                        <i class="fas fa-search text-primary me-2"></i>
+                        Maqola qidirish
+                    </h5>
+                    <form class="blog-search-form">
+                        <div class="input-group">
+                            <input type="text" 
+                                   class="form-control" 
+                                   placeholder="Kalit so'zlar..."
+                                   id="searchInput">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-3">
+                        <i class="fas fa-folder text-primary me-2"></i>
+                        Kategoriyalar
+                    </h5>
+                    <div class="categories-list">
+                        {% for category in categories %}
+                        <a href="{% url 'blog:category_posts' category.id %}" 
+                           class="category-item d-flex justify-content-between align-items-center py-3 px-3 rounded-3 text-decoration-none hover-bg">
+                            <div>
+                                <i class="fas fa-folder me-2 text-primary"></i>
+                                <span>{{ category.name }}</span>
+                            </div>
+                            <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill px-3 py-1">
+                                {{ category.post_count }}
+                            </span>
+                        </a>
+                        {% empty %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-folder-open fa-2x text-muted mb-3"></i>
+                            <p class="text-muted mb-0">Kategoriyalar mavjud emas</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popular Posts -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-3">
+                        <i class="fas fa-fire text-warning me-2"></i>
+                        Mashhur maqolalar
+                    </h5>
+                    <div class="popular-posts">
+                        {% for popular in popular_posts|slice:":5" %}
+                        <a href="{% url 'blog:post_detail' popular.pk %}" 
+                           class="popular-post-item d-flex gap-3 py-3 border-bottom text-decoration-none">
+                            {% if popular.image %}
+                            <img src="{{ popular.image.url }}" 
+                                 alt="{{ popular.title }}" 
+                                 class="rounded-3"
+                                 style="width: 70px; height: 70px; object-fit: cover;">
+                            {% else %}
+                            <div class="bg-primary bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center"
+                                 style="width: 70px; height: 70px;">
+                                <i class="fas fa-newspaper text-primary"></i>
+                            </div>
+                            {% endif %}
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1" style="font-size: 0.9rem;">{{ popular.title|truncatechars:50 }}</h6>
+                                <div class="d-flex align-items-center">
+                                    <small class="text-muted">
+                                        <i class="far fa-calendar me-1"></i>
+                                        {{ popular.created_at|date:"d.m.Y" }}
+                                    </small>
+                                </div>
+                            </div>
+                        </a>
+                        {% empty %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-chart-line fa-2x text-muted mb-3"></i>
+                            <p class="text-muted mb-0">Mashhur maqolalar yo'q</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tags Cloud -->
+            {% if all_tags %}
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-3">
+                        <i class="fas fa-hashtag text-primary me-2"></i>
+                        Teqlar buluti
+                    </h5>
+                    <div class="tags-cloud d-flex flex-wrap gap-2">
+                        {% for tag in all_tags|slice:":20" %}
+                        <a href="{% url 'blog:tag_posts' tag %}" 
+                           class="tag badge bg-light text-dark border py-2 px-3 text-decoration-none">
+                            #{{ tag }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter Section -->
+<div class="bg-light py-5 mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="newsletter-card bg-white rounded-4 shadow-sm p-5">
+                    <div class="mb-4">
+                        <div class="newsletter-icon bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                            <i class="fas fa-paper-plane text-primary fa-2x"></i>
+                        </div>
+                        <h3 class="mb-3">Yangi maqolalardan xabardor bo'ling</h3>
+                        <p class="text-muted mb-4">
+                            Eng so'nggi texnologiya yangiliklarini va darsliklarni o'tkazib yubormaslik uchun 
+                            obuna bo'ling.
+                        </p>
+                    </div>
+                    <form class="newsletter-form">
+                        <div class="input-group input-group-lg mb-3">
+                            <input type="email" 
+                                   class="form-control" 
+                                   placeholder="Email manzilingiz..."
+                                   required>
+                            <button class="btn btn-primary" type="submit">
+                                Obuna bo'lish
+                            </button>
+                        </div>
+                        <p class="small text-muted mb-0">
+                            Hech qanday spem. Faqat foydali kontent.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Hero Section */
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .blog-hero-icon {
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Cards */
+    .hover-lift {
+        transition: all 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+    }
+    
+    .hover-bg:hover {
+        background-color: rgba(102, 126, 234, 0.1);
+    }
+    
+    /* Empty State */
+    .empty-state-icon {
+        opacity: 0.5;
+    }
+    
+    /* Category Items */
+    .category-item {
+        transition: all 0.3s ease;
+        margin-bottom: 0.5rem;
+    }
+    
+    .category-item:last-child {
+        margin-bottom: 0;
+    }
+    
+    .category-item:hover {
+        background-color: rgba(102, 126, 234, 0.1);
+        transform: translateX(5px);
+    }
+    
+    /* Popular Posts */
+    .popular-post-item {
+        transition: all 0.3s ease;
+    }
+    
+    .popular-post-item:hover {
+        background-color: rgba(102, 126, 234, 0.05);
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        margin-left: -1rem;
+        margin-right: -1rem;
+    }
+    
+    /* Tags Cloud */
+    .tag {
+        transition: all 0.3s ease;
+    }
+    
+    .tag:hover {
+        background-color: #667eea !important;
+        color: white !important;
+        transform: scale(1.05);
+    }
+    
+    /* Newsletter */
+    .newsletter-card {
+        border: 1px solid rgba(102, 126, 234, 0.1);
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .post-card {
+        animation: fadeIn 0.5s ease-out;
+        animation-fill-mode: both;
+    }
+    
+    .post-card:nth-child(1) { animation-delay: 0.1s; }
+    .post-card:nth-child(2) { animation-delay: 0.2s; }
+    .post-card:nth-child(3) { animation-delay: 0.3s; }
+    .post-card:nth-child(4) { animation-delay: 0.4s; }
+    .post-card:nth-child(5) { animation-delay: 0.5s; }
+    .post-card:nth-child(6) { animation-delay: 0.6s; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .blog-hero {
+            padding: 4rem 0;
+        }
+        
+        .blog-hero h1 {
+            font-size: 2.5rem;
+        }
+        
+        .featured-post .card-body {
+            padding: 2rem !important;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Filter functionality
+        const categoryFilter = document.getElementById('categoryFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const searchInput = document.getElementById('searchInput');
+        const postCards = document.querySelectorAll('.post-card');
+        
+        function filterPosts() {
+            const selectedCategory = categoryFilter.value;
+            const selectedSort = sortFilter.value;
+            let visiblePosts = [];
+            
+            // Filter by category
+            postCards.forEach(card => {
+                const cardCategory = card.dataset.category;
+                const isVisible = !selectedCategory || cardCategory === selectedCategory;
+                
+                if (isVisible) {
+                    card.style.display = 'block';
+                    visiblePosts.push(card);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Sort posts
+            if (selectedSort === 'oldest') {
+                visiblePosts.sort((a, b) => parseInt(a.dataset.created) - parseInt(b.dataset.created));
+            } else if (selectedSort === 'popular') {
+                // Implement popularity sorting logic here
+                // This would require backend support for view counts
+            } else {
+                visiblePosts.sort((a, b) => parseInt(b.dataset.created) - parseInt(a.dataset.created));
+            }
+            
+            // Reorder posts in DOM
+            const postsGrid = document.getElementById('postsGrid');
+            visiblePosts.forEach(card => {
+                postsGrid.appendChild(card);
+            });
+            
+            // Show/hide empty state
+            const emptyState = document.querySelector('.empty-state');
+            if (visiblePosts.length === 0) {
+                if (!emptyState) {
+                    showEmptyState();
+                }
+            } else if (emptyState) {
+                emptyState.remove();
+            }
+        }
+        
+        function showEmptyState() {
+            const postsGrid = document.getElementById('postsGrid');
+            postsGrid.innerHTML = `
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm rounded-4">
+                        <div class="card-body p-5 text-center">
+                            <div class="empty-state-icon mb-4">
+                                <i class="fas fa-search fa-4x text-muted"></i>
+                            </div>
+                            <h4 class="mb-3">Maqolalar topilmadi</h4>
+                            <p class="text-muted mb-4">
+                                Tanlangan filtrga mos keladigan maqolalar mavjud emas.
+                            </p>
+                            <button class="btn btn-primary" id="resetFilters">
+                                <i class="fas fa-redo me-2"></i> Filtrlarni tozalash
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add reset functionality
+            document.getElementById('resetFilters').addEventListener('click', function() {
+                categoryFilter.value = '';
+                sortFilter.value = 'newest';
+                searchInput.value = '';
+                location.reload();
+            });
+        }
+        
+        // Add event listeners
+        categoryFilter.addEventListener('change', filterPosts);
+        sortFilter.addEventListener('change', filterPosts);
+        
+        // Search functionality
+        const searchForm = document.querySelector('.blog-search-form');
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            postCards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const content = card.querySelector('.card-text').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Load more functionality
+        const loadMoreBtn = document.getElementById('loadMore');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                const spinner = this.querySelector('.fa-spinner');
+                spinner.classList.remove('d-none');
+                
+                // Simulate loading
+                setTimeout(() => {
+                    // In real app, this would be an AJAX call to load more posts
+                    spinner.classList.add('d-none');
+                    this.disabled = true;
+                    this.innerHTML = '<span>Barcha maqolalar yuklandi</span>';
+                }, 1000);
+            });
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                const button = this.querySelector('button[type="submit"]');
+                const originalText = button.innerHTML;
+                
+                button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Yuborilmoqda...';
+                button.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-check me-2"></i>Obuna boʻldingiz!';
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                        newsletterForm.reset();
+                    }, 2000);
+                }, 1500);
+            });
+        }
+        
+        // Add scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        postCards.forEach(card => observer.observe(card));
+        
+        // Initialize tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>
+
+{% endblock %}

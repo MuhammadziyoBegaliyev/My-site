@@ -1,0 +1,2389 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Muhammadziyo | Django Dasturchisi{% endblock %}
+
+{% block content %}
+<!-- ========== HERO SECTION ========== -->
+<section class="hero-section" style="
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    color: white;
+">
+    <!-- Animated background elements -->
+    <div class="hero-bg-elements">
+        <div class="circle" style="
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        "></div>
+        <div class="circle" style="
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+        "></div>
+    </div>
+
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- LEFT COLUMN: Text Content -->
+            <div class="col-lg-6">
+                <!-- Greeting Badge -->
+                <div class="greeting-badge mb-4" style="
+                    display: inline-block;
+                    background: rgba(255,255,255,0.1);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.2);
+                    border-radius: 50px;
+                    padding: 10px 20px;
+                ">
+                    <span style="
+                        font-size: 14px;
+                        font-weight: 500;
+                        letter-spacing: 1px;
+                    ">
+                        👋 SALOM, MEN
+                    </span>
+                </div>
+
+                <!-- Main Title with Typewriter Effect -->
+                <h1 class="hero-title mb-4" style="
+                    font-size: 3.5rem;
+                    font-weight: 800;
+                    line-height: 1.2;
+                    margin-bottom: 1.5rem;
+                ">
+                    <span class="typewriter-text">Muhammadziyo</span>
+                </h1>
+
+               <!-- ANIMATED TECH STACK - Muhammadziyo -->
+                <div class="tech-stack-container" style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 15px;
+                    justify-content: center;
+                    margin: 2rem 0;
+                ">
+
+                    <!-- 1. PYTHON -->
+                    <div class="tech-card" style="
+                        position: relative;
+                        display: inline-flex;
+                        align-items: center;
+                        padding: 12px 25px;
+                        background: linear-gradient(135deg, rgba(55, 118, 171, 0.2), rgba(255, 255, 255, 0.1));
+                        border-radius: 50px;
+                        border: 2px solid rgba(55, 118, 171, 0.3);
+                        backdrop-filter: blur(10px);
+                        color: white;
+                        font-weight: 600;
+                        font-size: 1.1rem;
+                        animation: techFloat 3s ease-in-out infinite;
+                        box-shadow: 0 10px 20px rgba(55, 118, 171, 0.2);
+                    ">
+                        <div class="tech-icon" style="
+                            margin-right: 10px;
+                            font-size: 1.5rem;
+                            animation: iconPulse 2s infinite;
+                        ">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <span>Python</span>
+                        <div class="tech-level" style="
+                            position: absolute;
+                            bottom: -8px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            font-size: 0.7rem;
+                            background: rgba(55, 118, 171, 0.8);
+                            padding: 2px 10px;
+                            border-radius: 10px;
+                            color: white;
+                        ">Expert</div>
+                    </div>
+
+                    <!-- 2. DJANGO -->
+                    <div class="tech-card" style="
+                        position: relative;
+                        display: inline-flex;
+                        align-items: center;
+                        padding: 12px 25px;
+                        background: linear-gradient(135deg, rgba(9, 46, 32, 0.2), rgba(255, 255, 255, 0.1));
+                        border-radius: 50px;
+                        border: 2px solid rgba(9, 46, 32, 0.3);
+                        backdrop-filter: blur(10px);
+                        color: white;
+                        font-weight: 600;
+                        font-size: 1.1rem;
+                        animation: techFloat 3s ease-in-out infinite 0.2s;
+                        box-shadow: 0 10px 20px rgba(9, 46, 32, 0.2);
+                    ">
+                        <div class="tech-icon" style="
+                            margin-right: 10px;
+                            font-size: 1.5rem;
+                            animation: iconPulse 2s infinite 0.2s;
+                        ">
+                            <i class="fab fa-django"></i>
+                        </div>
+                        <span>Django</span>
+                        <div class="tech-level" style="
+                            position: absolute;
+                            bottom: -8px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            font-size: 0.7rem;
+                            background: rgba(9, 46, 32, 0.8);
+                            padding: 2px 10px;
+                            border-radius: 10px;
+                            color: white;
+                        ">Advanced</div>
+                    </div>
+
+                    <!-- 3. DRF (Django REST Framework) -->
+                    <div class="tech-card" style="
+                        position: relative;
+                        display: inline-flex;
+                        align-items: center;
+                        padding: 12px 25px;
+                        background: linear-gradient(135deg, rgba(32, 107, 196, 0.2), rgba(255, 255, 255, 0.1));
+                        border-radius: 50px;
+                        border: 2px solid rgba(32, 107, 196, 0.3);
+                        backdrop-filter: blur(10px);
+                        color: white;
+                        font-weight: 600;
+                        font-size: 1.1rem;
+                        animation: techFloat 3s ease-in-out infinite 0.4s;
+                        box-shadow: 0 10px 20px rgba(32, 107, 196, 0.2);
+                    ">
+                        <div class="tech-icon" style="
+                            margin-right: 10px;
+                            font-size: 1.5rem;
+                            animation: iconRotate 4s linear infinite;
+                        ">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <span>DRF</span>
+                        <div class="tech-level" style="
+                            position: absolute;
+                            bottom: -8px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            font-size: 0.7rem;
+                            background: rgba(32, 107, 196, 0.8);
+                            padding: 2px 10px;
+                            border-radius: 10px;
+                            color: white;
+                        ">Intermediate</div>
+                    </div>
+
+                    <!-- 4. AIOGRAM (Telegram Bot) -->
+                    <div class="tech-card" style="
+                        position: relative;
+                        display: inline-flex;
+                        align-items: center;
+                        padding: 12px 25px;
+                        background: linear-gradient(135deg, rgba(0, 136, 204, 0.2), rgba(255, 255, 255, 0.1));
+                        border-radius: 50px;
+                        border: 2px solid rgba(0, 136, 204, 0.3);
+                        backdrop-filter: blur(10px);
+                        color: white;
+                        font-weight: 600;
+                        font-size: 1.1rem;
+                        animation: techFloat 3s ease-in-out infinite 0.6s;
+                        box-shadow: 0 10px 20px rgba(0, 136, 204, 0.2);
+                    ">
+                        <div class="tech-icon" style="
+                            margin-right: 10px;
+                            font-size: 1.5rem;
+                            animation: iconShake 2s infinite;
+                        ">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <span>Aiogram</span>
+                        <div class="tech-level" style="
+                            position: absolute;
+                            bottom: -8px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            font-size: 0.7rem;
+                            background: rgba(0, 136, 204, 0.8);
+                            padding: 2px 10px;
+                            border-radius: 10px;
+                            color: white;
+                        ">Intermediate</div>
+                    </div>
+
+                    <!-- 5. SQLite -->
+                    <div class="tech-card" style="
+                        position: relative;
+                        display: inline-flex;
+                        align-items: center;
+                        padding: 12px 25px;
+                        background: linear-gradient(135deg, rgba(0, 93, 164, 0.2), rgba(255, 255, 255, 0.1));
+                        border-radius: 50px;
+                        border: 2px solid rgba(0, 93, 164, 0.3);
+                        backdrop-filter: blur(10px);
+                        color: white;
+                        font-weight: 600;
+                        font-size: 1.1rem;
+                        animation: techFloat 3s ease-in-out infinite 0.8s;
+                        box-shadow: 0 10px 20px rgba(0, 93, 164, 0.2);
+                    ">
+                        <div class="tech-icon" style="
+                            margin-right: 10px;
+                            font-size: 1.5rem;
+                            animation: iconPulse 2s infinite 0.5s;
+                        ">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <span>SQLite</span>
+                        <div class="tech-level" style="
+                            position: absolute;
+                            bottom: -8px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            font-size: 0.7rem;
+                            background: rgba(0, 93, 164, 0.8);
+                            padding: 2px 10px;
+                            border-radius: 10px;
+                            color: white;
+                        ">Advanced</div>
+                    </div>
+
+                </div>
+
+                <!-- ANIMATION STYLES -->
+                <style>
+                /* Main floating animation */
+                @keyframes techFloat {
+                    0%, 100% {
+                        transform: translateY(0);
+                        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                    }
+                    50% {
+                        transform: translateY(-15px);
+                        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    }
+                }
+
+                /* Icon animations */
+                @keyframes iconPulse {
+                    0%, 100% {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                    50% {
+                        transform: scale(1.2);
+                        opacity: 0.8;
+                    }
+                }
+
+                @keyframes iconRotate {
+                    from {
+                        transform: rotate(0deg);
+                    }
+                    to {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                @keyframes iconShake {
+                    0%, 100% {
+                        transform: translateX(0);
+                    }
+                    25% {
+                        transform: translateX(-5px);
+                    }
+                    75% {
+                        transform: translateX(5px);
+                    }
+                }
+
+                /* Hover effects */
+                .tech-card:hover {
+                    animation-play-state: paused;
+                    transform: translateY(-5px) scale(1.05) !important;
+                    cursor: pointer;
+                    filter: brightness(1.2);
+                }
+
+                /* Mobile responsive */
+                @media (max-width: 768px) {
+                    .tech-card {
+                        padding: 10px 20px !important;
+                        font-size: 1rem !important;
+                        margin: 5px !important;
+                    }
+                    
+                    .tech-icon {
+                        font-size: 1.2rem !important;
+                    }
+                }
+
+                /* Tech level indicator */
+                .tech-level::after {
+                    content: '';
+                    position: absolute;
+                    top: -4px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 8px;
+                    height: 8px;
+                    background: currentColor;
+                    border-radius: 50%;
+                }
+                </style>
+
+                <!-- Interactive JavaScript -->
+                <script>
+                document.querySelectorAll('.tech-card').forEach(card => {
+                    // Click effect
+                    card.addEventListener('click', function() {
+                        const tech = this.querySelector('span').textContent;
+                        alert(`Siz ${tech} texnologiyasini tanladingiz! \n\nBu texnologiya bo'yicha ko'proq ma'lumot: 
+                • Python: Backend dasturlash
+                • Django: Veb-framework
+                • DRF: REST API yaratish
+                • Aiogram: Telegram bot
+                • SQLite: Ma'lumotlar bazasi`);
+                    });
+                    
+                    // Tooltip on hover
+                    card.addEventListener('mouseenter', function() {
+                        const tech = this.querySelector('span').textContent;
+                        const level = this.querySelector('.tech-level').textContent;
+                        
+                        // Create tooltip
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'tech-tooltip';
+                        tooltip.innerHTML = `
+                            <strong>${tech}</strong><br>
+                            Daraja: ${level}<br>
+                            <small>Bosing: Tafsilotlar</small>
+                        `;
+                        tooltip.style.cssText = `
+                            position: absolute;
+                            top: -70px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            background: rgba(0,0,0,0.8);
+                            color: white;
+                            padding: 10px;
+                            border-radius: 10px;
+                            font-size: 12px;
+                            white-space: nowrap;
+                            z-index: 1000;
+                            pointer-events: none;
+                        `;
+                        
+                        this.appendChild(tooltip);
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        const tooltip = this.querySelector('.tech-tooltip');
+                        if (tooltip) {
+                            tooltip.remove();
+                        }
+                    });
+                });
+                </script>
+
+                <!-- Description -->
+                <p class="hero-description mb-5" style="
+                    font-size: 1.2rem;
+                    line-height: 1.8;
+                    opacity: 0.9;
+                    max-width: 90%;
+                ">
+                    6oy+  tajribaga ega <strong>Backend Dasturchi</strong>. 
+                    Modern texnologiyalar yordamida innovatsion va 
+                    samarali veb-ilovalar yaratishni yaxshi ko'raman.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="hero-buttons d-flex flex-wrap gap-3">
+                    <a href="{% url 'projects:project_list' %}" 
+                       class="btn-cta-primary" style="
+                        background: white;
+                        color: #667eea;
+                        border: none;
+                        padding: 15px 30px;
+                        border-radius: 50px;
+                        font-weight: 600;
+                        font-size: 1.1rem;
+                        text-decoration: none;
+                        display: inline-flex;
+                        align-items: center;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    ">
+                        <i class="fas fa-rocket me-2"></i>
+                        Loyihalarimni Ko'ring
+                    </a>
+                    
+                    <a href="{% url 'contact' %}" 
+                       class="btn-cta-secondary" style="
+                        background: transparent;
+                        color: white;
+                        border: 2px solid rgba(255,255,255,0.3);
+                        padding: 15px 30px;
+                        border-radius: 50px;
+                        font-weight: 600;
+                        font-size: 1.1rem;
+                        text-decoration: none;
+                        display: inline-flex;
+                        align-items: center;
+                        transition: all 0.3s ease;
+                    ">
+                        <i class="fas fa-paper-plane me-2"></i>
+                        Bog'lanish
+                    </a>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="quick-stats mt-5 pt-4" style="
+                    border-top: 1px solid rgba(255,255,255,0.1);
+                ">
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <div class="stat-number" style="
+                                font-size: 2rem;
+                                font-weight: 700;
+                            ">10+</div>
+                            <div class="stat-label" style="
+                                font-size: 0.9rem;
+                                opacity: 0.8;
+                            ">Loyihalar</div>
+                        </div>
+                        <div class="col-4 text-center">
+                            <div class="stat-number" style="
+                                font-size: 2rem;
+                                font-weight: 700;
+                            ">0.6+</div>
+                            <div class="stat-label" style="
+                                font-size: 0.9rem;
+                                opacity: 0.8;
+                            ">Yillik Tajriba</div>
+                        </div>
+                        <div class="col-4 text-center">
+                            <div class="stat-number" style="
+                                font-size: 2rem;
+                                font-weight: 700;
+                            ">50+</div>
+                            <div class="stat-label" style="
+                                font-size: 0.9rem;
+                                opacity: 0.8;
+                            ">Maqolalar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Profile Image -->
+            <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                <div class="profile-container" style="
+                    position: relative;
+                    display: inline-block;
+                ">
+                    <!-- Main Profile Image -->
+                    <div class="profile-image-wrapper" style="
+                        position: relative;
+                        width: 400px;
+                        height: 400px;
+                        margin: 0 auto;
+                    ">
+                        <img src="/static/images/photo_2025-12-30_21-10-15.jpg" 
+                             alt="Muhammadziyo"
+                             class="profile-img" style="
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                border-radius: 50%;
+                                border: 15px solid rgba(255,255,255,0.1);
+                                box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+                        ">
+                        
+                        <!-- Floating Tech Icons -->
+                        <div class="floating-icons">
+                            <div class="floating-icon" style="
+                                position: absolute;
+                                top: 10%;
+                                left: -20px;
+                                background: #ff6b6b;
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                color: white;
+                                font-size: 1.5rem;
+                                box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+                                animation: float 3s ease-in-out infinite;
+                            ">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="floating-icon" style="
+                                position: absolute;
+                                top: 50%;
+                                right: -20px;
+                                background: #4ecdc4;
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                color: white;
+                                font-size: 1.5rem;
+                                box-shadow: 0 10px 20px rgba(78,205,196,0.3);
+                                animation: float 3s ease-in-out infinite 0.5s;
+                            ">
+                                <i class="fab fa-django"></i>
+                            </div>
+                            <div class="floating-icon" style="
+                                position: absolute;
+                                bottom: 10%;
+                                left: -20px;
+                                background: #45b7d1;
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                color: white;
+                                font-size: 1.5rem;
+                                box-shadow: 0 10px 20px rgba(69,183,209,0.3);
+                                animation: float 3s ease-in-out infinite 1s;
+                            ">
+                                <i class="fab fa-vuejs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" style="
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    ">
+        <div class="mouse" style="
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 20px;
+            display: inline-block;
+            position: relative;
+            margin-bottom: 10px;
+        ">
+            <div class="wheel" style="
+                width: 4px;
+                height: 10px;
+                background: white;
+                border-radius: 2px;
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                animation: scrollWheel 2s infinite;
+            "></div>
+        </div>
+        <div class="arrow" style="
+            animation: bounce 2s infinite;
+        ">
+            <i class="fas fa-chevron-down" style="color: white; font-size: 1.2rem;"></i>
+        </div>
+    </div>
+</section>
+
+<section class="skills-section py-5" style="
+    background: #f8f9fa;
+    padding: 100px 0;
+">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title" style="
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                background: linear-gradient(45deg, #667eea, #764ba2);
+                -webkit-background-clip: text;
+                background-clip: text;  
+                -webkit-text-fill-color: transparent;
+                color: transparent;  
+                display: inline-block;
+            ">Texnologiyalar</h2>
+            <p class="section-subtitle" style="
+                font-size: 1.1rem;
+                color: #6c757d;
+                max-width: 600px;
+                margin: 0 auto;
+            ">Ish faoliyatim davomida o'zlashtirgan asosiy texnologiyalar va ko'nikmalar</p>
+        </div>
+
+        <div class="row">
+
+
+            <!-- Python & Django Card -->
+            <div class="col-md-6 mb-4">
+                <div class="skill-card" style="
+                    background: white;
+                    border-radius: 20px;
+                    padding: 40px;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                    height: 100%;
+                    transition: transform 0.3s ease;
+                ">
+                    <div class="skill-header d-flex align-items-center mb-4">
+                        <div class="skill-icon" style="
+                            width: 70px;
+                            height: 70px;
+                            background: linear-gradient(135deg, #3776ab, #4b8bbe);
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-right: 20px;
+                        ">
+                            <i class="fab fa-python fa-2x text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="skill-title" style="
+                                font-size: 1.5rem;
+                                font-weight: 600;
+                                margin-bottom: 5px;
+                            ">Python & Django</h3>
+                            <p class="skill-subtitle" style="
+                                color: #6c757d;
+                                font-size: 0.9rem;
+                            ">Backend Development</p>
+                        </div>
+                    </div>
+
+                    <!-- ========== IMPROVED PROGRESS BAR ========== -->
+                    <div class="skill-progress mb-4">
+                        <div class="progress-header d-flex justify-content-between align-items-center mb-3">
+                            <div class="skill-label" style="
+                                font-weight: 600;
+                                color: #333;
+                                font-size: 1rem;
+                            ">
+                                <i class="fas fa-chart-line me-2" style="color: #3776ab;"></i>
+                                Bilim Darajasi
+                            </div>
+                            <div class="progress-percentage" style="
+                                font-weight: 700;
+                                font-size: 1.2rem;
+                                color: #3776ab;
+                                background: rgba(55, 118, 171, 0.1);
+                                padding: 4px 12px;
+                                border-radius: 20px;
+                            ">
+                                <span class="percentage-value">90</span>%
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar Container -->
+                        <div class="progress-container" style="
+                            position: relative;
+                            height: 14px;
+                            background: #f0f3f7;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+                        ">
+                            <!-- Animated Progress Fill -->
+                            <div class="progress-fill" style="
+                                position: absolute;
+                                height: 100%;
+                                width: 0%;  
+                                background: linear-gradient(
+                                    90deg,
+                                    #3776ab 0%,
+                                    #4b8bbe 50%,
+                                    #5ca0e9 100%
+                                );
+                                border-radius: 10px;
+                                animation: progressAnimation 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                            "></div>
+                            
+                            <!-- Progress Stripes (Pattern) -->
+                            <div class="progress-stripes" style="
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background: repeating-linear-gradient(
+                                    45deg,
+                                    transparent,
+                                    transparent 10px,
+                                    rgba(255,255,255,0.1) 10px,
+                                    rgba(255,255,255,0.1) 20px
+                                );
+                                border-radius: 10px;
+                            "></div>
+                            
+                            <!-- Progress Steps (Optional) -->
+                            <div class="progress-steps" style="
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                justify-content: space-between;
+                                padding: 0 5px;
+                            ">
+                                <div class="step" style="width: 20%; border-right: 1px dashed rgba(0,0,0,0.1);"></div>
+                                <div class="step" style="width: 20%; border-right: 1px dashed rgba(0,0,0,0.1);"></div>
+                                <div class="step" style="width: 20%; border-right: 1px dashed rgba(0,0,0,0.1);"></div>
+                                <div class="step" style="width: 20%; border-right: 1px dashed rgba(0,0,0,0.1);"></div>
+                                <div class="step" style="width: 20%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Progress Level Labels -->
+                        <div class="progress-labels d-flex justify-content-between mt-2" style="
+                            font-size: 0.75rem;
+                            color: #6c757d;
+                        ">
+                            <span>Beginner</span>
+                            <span>Intermediate</span>
+                            <span>Advanced</span>
+                            <span>Expert</span>
+                        </div>
+
+                        <!-- Progress Tooltip -->
+                        <div class="progress-tooltip" style="
+                            text-align: center;
+                            margin-top: 10px;
+                            font-size: 0.85rem;
+                            color: #666;
+                            opacity: 0;
+                            animation: fadeIn 0.5s ease 2s forwards;
+                        ">
+                            <i class="fas fa-info-circle me-1"></i>
+                            <span class="tooltip-text">1+ yillik tajriba, 10+ loyiha</span>
+                        </div>
+                    </div>
+
+                    <!-- ========== ANIMATION STYLES ========== -->
+                    <style>
+                    /* Progress Fill Animation */
+                    @keyframes progressAnimation {
+                        0% {
+                            width: 0%;
+                            box-shadow: 0 0 0 rgba(55, 118, 171, 0);
+                        }
+                        100% {
+                            width: 90%;
+                            box-shadow: 0 0 15px rgba(55, 118, 171, 0.4);
+                        }
+                    }
+
+                    /* Progress Fill Glow Effect */
+                    @keyframes progressGlow {
+                        0%, 100% {
+                            filter: brightness(1);
+                        }
+                        50% {
+                            filter: brightness(1.2);
+                        }
+                    }
+
+                    /* Tooltip Fade In */
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+
+                    /* Hover Effects */
+                    .progress-container:hover .progress-fill {
+                        animation: progressGlow 1.5s infinite;
+                    }
+
+                    .progress-container:hover::after {
+                        content: '90% - Expert Level';
+                        position: absolute;
+                        top: -35px;
+                        left: 90%;
+                        transform: translateX(-50%);
+                        background: #333;
+                        color: white;
+                        padding: 5px 10px;
+                        border-radius: 5px;
+                        font-size: 0.8rem;
+                        white-space: nowrap;
+                        z-index: 100;
+                    }
+
+                    .progress-container:hover::before {
+                        content: '';
+                        position: absolute;
+                        top: -10px;
+                        left: 90%;
+                        transform: translateX(-50%);
+                        border: 5px solid transparent;
+                        border-top-color: #333;
+                        z-index: 100;
+                    }
+
+                    /* Progress Indicator Dot */
+                    .progress-fill::after {
+                        content: '';
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 20px;
+                        height: 20px;
+                        background: white;
+                        border: 3px solid #3776ab;
+                        border-radius: 50%;
+                        box-shadow: 0 0 10px rgba(55, 118, 171, 0.5);
+                    }
+
+                    /* Responsive Design */
+                    @media (max-width: 768px) {
+                        .progress-container {
+                            height: 12px;
+                        }
+                        
+                        .progress-percentage {
+                            font-size: 1rem;
+                            padding: 3px 10px;
+                        }
+                        
+                        .progress-labels {
+                            font-size: 0.7rem;
+                        }
+                    }
+                    </style>
+
+                    <!-- ========== INTERACTIVE JAVASCRIPT ========== -->
+                    <script>
+                    // Progress bar animation with callback
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const progressFill = document.querySelector('.progress-fill');
+                        const percentageValue = document.querySelector('.percentage-value');
+                        
+                        // Start progress animation
+                        setTimeout(() => {
+                            progressFill.style.width = '90%';
+                            
+                            // Animate percentage counter
+                            let current = 0;
+                            const target = 90;
+                            const increment = target / 50;
+                            
+                            const counter = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(counter);
+                                }
+                                percentageValue.textContent = Math.floor(current);
+                            }, 30);
+                        }, 500);
+                        
+                        // Click to show details
+                        progressFill.addEventListener('click', function() {
+                            const details = [
+                                "Python: 3+ yillik tajriba",
+                                "Django: 20+ loyiha",
+                                "DRF: 10+ REST API",
+                                "SQLite: Expert daraja",
+                                "Aiogram: 5+ Telegram bot"
+                            ];
+                            
+                            alert("Bilim Darajasi Detallari:\n\n" + details.join("\n"));
+                        });
+                    });
+                    </script>
+
+                    <!-- Technologies List -->
+                    <div class="skill-tags">
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: #e3f2fd;
+                            color: #1976d2;
+                            padding: 5px 15px;
+                            border-radius: 20px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                        ">Django</span>
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: #e3f2fd;
+                            color: #1976d2;
+                            padding: 5px 15px;
+                            border-radius: 20px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                        ">Django REST</span>
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: #e3f2fd;
+                            color: #1976d2;
+                            padding: 5px 15px;
+                            border-radius: 20px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                        ">FastAPI</span>
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: #e3f2fd;
+                            color: #1976d2;
+                            padding: 5px 15px;
+                            border-radius: 20px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                        ">Flask</span>
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: #e3f2fd;
+                            color: #1976d2;
+                            padding: 5px 15px;
+                            border-radius: 20px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                        ">Celery</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aiogram (Telegram Bot) Card -->
+            <div class="col-md-6 mb-4">
+                <div class="skill-card" style="
+                    background: white;
+                    border-radius: 20px;
+                    padding: 40px;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                    height: 100%;
+                    transition: all 0.3s ease;
+                    border: 2px solid transparent;
+                    background: linear-gradient(white, white) padding-box,
+                                linear-gradient(135deg, #0088cc, #25d366) border-box;
+                ">
+                    <div class="skill-header d-flex align-items-center mb-4">
+                        <div class="skill-icon" style="
+                            width: 70px;
+                            height: 70px;
+                            background: linear-gradient(135deg, #0088cc, #25d366);
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-right: 20px;
+                            box-shadow: 0 10px 20px rgba(0, 136, 204, 0.3);
+                        ">
+                            <i class="fab fa-telegram fa-2x text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="skill-title" style="
+                                font-size: 1.5rem;
+                                font-weight: 700;
+                                margin-bottom: 5px;
+                                color: #333;
+                            ">Telegram Bot Development</h3>
+                            <p class="skill-subtitle" style="
+                                color: #666;
+                                font-size: 0.9rem;
+                            ">Aiogram Framework</p>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="skill-progress mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="skill-label" style="
+                                font-weight: 600;
+                                color: #555;
+                            ">
+                                <i class="fas fa-bolt me-1" style="color: #0088cc;"></i>
+                                Bot Mahorati
+                            </span>
+                            <span class="skill-percentage" style="
+                                font-weight: 700;
+                                font-size: 1.2rem;
+                                color: #0088cc;
+                                background: rgba(0, 136, 204, 0.1);
+                                padding: 4px 12px;
+                                border-radius: 20px;
+                            ">85%</span>
+                        </div>
+                        <div class="progress-container" style="
+                            position: relative;
+                            height: 14px;
+                            background: #f0f3f7;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+                        ">
+                            <div class="progress-fill" style="
+                                position: absolute;
+                                height: 100%;
+                                width: 0%;
+                                background: linear-gradient(
+                                    90deg,
+                                    #0088cc 0%,
+                                    #25d366 50%,
+                                    #34b7f1 100%
+                                );
+                                border-radius: 10px;
+                                animation: aiogramProgress 2s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.5s;
+                            "></div>
+                            
+                            <!-- Animated Dots -->
+                            <div class="progress-dots" style="
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background-image: 
+                                    radial-gradient(circle at 10% 50%, #0088cc 2px, transparent 2px),
+                                    radial-gradient(circle at 30% 50%, #0088cc 2px, transparent 2px),
+                                    radial-gradient(circle at 50% 50%, #0088cc 2px, transparent 2px),
+                                    radial-gradient(circle at 70% 50%, #0088cc 2px, transparent 2px),
+                                    radial-gradient(circle at 90% 50%, #0088cc 2px, transparent 2px);
+                                background-size: 20% 100%;
+                                opacity: 0.3;
+                            "></div>
+                        </div>
+                    </div>
+
+                    <!-- Bot Statistics -->
+                    <div class="bot-stats mb-4" style="
+                        background: linear-gradient(135deg, rgba(0, 136, 204, 0.05), rgba(37, 211, 102, 0.05));
+                        border-radius: 15px;
+                        padding: 15px;
+                    ">
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <div class="stat-number" style="
+                                    font-size: 1.5rem;
+                                    font-weight: 700;
+                                    color: #0088cc;
+                                ">10+</div>
+                                <div class="stat-label" style="
+                                    font-size: 0.8rem;
+                                    color: #666;
+                                ">Bot Loyiha</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number" style="
+                                    font-size: 1.5rem;
+                                    font-weight: 700;
+                                    color: #25d366;
+                                ">100+</div>
+                                <div class="stat-label" style="
+                                    font-size: 0.8rem;
+                                    color: #666;
+                                ">Foydalanuvchi</div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-number" style="
+                                    font-size: 1.5rem;
+                                    font-weight: 700;
+                                    color: #34b7f1;
+                                ">1+</div>
+                                <div class="stat-label" style="
+                                    font-size: 0.8rem;
+                                    color: #666;
+                                ">Yil Tajriba</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technologies List -->
+                    <div class="skill-tags">
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+                            color: #0088cc;
+                            padding: 8px 16px;
+                            border-radius: 25px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                            font-weight: 500;
+                            border: 1px solid rgba(0, 136, 204, 0.2);
+                            transition: all 0.3s ease;
+                        ">
+                            <i class="fas fa-robot me-1"></i>Aiogram
+                        </span>
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+                            color: #25d366;
+                            padding: 8px 16px;
+                            border-radius: 25px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                            font-weight: 500;
+                            border: 1px solid rgba(37, 211, 102, 0.2);
+                            transition: all 0.3s ease;
+                        ">
+                            <i class="fas fa-cogs me-1"></i>FSM (States)
+                        </span>
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+                            color: #00bcd4;
+                            padding: 8px 16px;
+                            border-radius: 25px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                            font-weight: 500;
+                            border: 1px solid rgba(0, 188, 212, 0.2);
+                            transition: all 0.3s ease;
+                        ">
+                            <i class="fas fa-database me-1"></i>SQLite + Bot
+                        </span>
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+                            color: #9c27b0;
+                            padding: 8px 16px;
+                            border-radius: 25px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                            font-weight: 500;
+                            border: 1px solid rgba(156, 39, 176, 0.2);
+                            transition: all 0.3s ease;
+                        ">
+                            <i class="fas fa-keyboard me-1"></i>Inline Keyboard
+                        </span>
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: linear-gradient(135deg, #fff3e0, #ffcc80);
+                            color: #ff9800;
+                            padding: 8px 16px;
+                            border-radius: 25px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                            font-weight: 500;
+                            border: 1px solid rgba(255, 152, 0, 0.2);
+                            transition: all 0.3s ease;
+                        ">
+                            <i class="fas fa-image me-1"></i>Media Handler
+                        </span>
+                        <span class="skill-tag" style="
+                            display: inline-block;
+                            background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+                            color: #3f51b5;
+                            padding: 8px 16px;
+                            border-radius: 25px;
+                            font-size: 0.9rem;
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                            font-weight: 500;
+                            border: 1px solid rgba(63, 81, 181, 0.2);
+                            transition: all 0.3s ease;
+                        ">
+                            <i class="fas fa-shield-alt me-1"></i>Middleware
+                        </span>
+                    </div>
+
+                    <!-- Bot Features -->
+                    <div class="bot-features mt-4">
+                        <h6 style="
+                            font-size: 0.9rem;
+                            font-weight: 600;
+                            color: #555;
+                            margin-bottom: 10px;
+                        ">
+                            <i class="fas fa-star me-2" style="color: #ff9800;"></i>
+                            Bot Turlari:
+                        </h6>
+                        <div class="features-list">
+                            <span class="feature-badge" style="
+                                display: inline-block;
+                                background: rgba(0, 136, 204, 0.1);
+                                color: #0088cc;
+                                padding: 5px 12px;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                margin-right: 8px;
+                                margin-bottom: 8px;
+                            ">Farmastevtika Bot</span>
+                            <span class="feature-badge" style="
+                                display: inline-block;
+                                background: rgba(37, 211, 102, 0.1);
+                                color: #25d366;
+                                padding: 5px 12px;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                margin-right: 8px;
+                                margin-bottom: 8px;
+                            ">Admin Panel Bot</span>
+                            <span class="feature-badge" style="
+                                display: inline-block;
+                                background: rgba(255, 152, 0, 0.1);
+                                color: #ff9800;
+                                padding: 5px 12px;
+                                border-radius: 15px;
+                                font-size: 0.8rem;
+                                margin-right: 8px;
+                                margin-bottom: 8px;
+                            ">CRUD Bot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animation for Aiogram Progress -->
+            <style>
+            @keyframes aiogramProgress {
+                0% {
+                    width: 0%;
+                    box-shadow: 0 0 0 rgba(0, 136, 204, 0);
+                }
+                100% {
+                    width: 75%;
+                    box-shadow: 0 0 15px rgba(0, 136, 204, 0.4);
+                }
+            }
+
+            /* Hover Effects */
+            .skill-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 30px 60px rgba(0, 136, 204, 0.15);
+            }
+
+            .skill-tag:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0, 136, 204, 0.2);
+            }
+
+            /* Telegram Icon Animation */
+            .skill-icon {
+                animation: telegramPulse 3s infinite;
+            }
+
+            @keyframes telegramPulse {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+
+            /* Bot Stats Animation */
+            .stat-number {
+                animation: countUp 1.5s ease-out;
+            }
+
+            @keyframes countUp {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            </style>
+
+            <!-- Interactive JavaScript -->
+            <script>
+            // Animated progress bar
+            document.addEventListener('DOMContentLoaded', function() {
+                const progressFill = document.querySelector('.skill-card .progress-fill');
+                const statNumbers = document.querySelectorAll('.stat-number');
+                
+                // Start animations after a delay
+                setTimeout(() => {
+                    // Progress bar animation
+                    if (progressFill) {
+                        progressFill.style.width = '85%';
+                    }
+                    
+                    // Animate stats numbers
+                    statNumbers.forEach((stat, index) => {
+                        const target = stat.textContent;
+                        stat.textContent = '0';
+                        
+                        let count = 0;
+                        const increment = parseInt(target) / 50;
+                        
+                        const timer = setInterval(() => {
+                            count += increment;
+                            if (count >= parseInt(target)) {
+                                stat.textContent = target;
+                                clearInterval(timer);
+                            } else {
+                                stat.textContent = Math.floor(count);
+                            }
+                        }, 30);
+                    });
+                }, 1000);
+                
+                // Click on card to show bot details
+                const card = document.querySelector('.skill-card');
+                card.addEventListener('click', function() {
+                    const botDetails = `
+            🤖 Telegram Bot Portfolio:
+
+            📊 STATISTIKA:
+            • 10+ bot loyiha
+            • 100+ foydalanuvchi
+            • 1+ yillik tajriba
+
+            🚀 ASOSIY BOTLAR:
+            1. Farmastectivtika Bot - Mahsulot sotish
+            2. Admin Panel Bot - Boshqaruv
+            3. CRUD Bot - Ma'lumotlar bazasi
+
+            🛠 TEXNOLOGIYALAR:
+            • Aiogram 3.x
+            • FSM (Holatlar menejmenti)
+            • SQLite bilan integratsiya
+            • Inline Keyboard
+            • Media Handler
+
+            📈 KO'NIKMALAR:
+            • Bot arxitektura
+            • Database design
+            • User experience
+            • Error handling
+                    `;
+                    
+                    alert(botDetails);
+                });
+            });
+            </script>
+        </div>
+
+        <!-- ========== GIT & LINUX KO'NIKMALARI ========== -->
+        <div class="additional-skills-section py-5" style="
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        ">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h3 class="section-title" style="
+                        font-size: 2rem;
+                        font-weight: 700;
+                        margin-bottom: 1rem;
+                        background: linear-gradient(45deg, #f05032, #1793d1);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-clip: text;
+                        color: transparent;
+                        display: inline-block;
+                    ">
+                        <i class="fas fa-tools me-2"></i>Development Tools
+                    </h3>
+                    <p class="section-subtitle" style="
+                        font-size: 1.1rem;
+                        color: #6c757d;
+                        max-width: 600px;
+                        margin: 0 auto;
+                    ">Dasturlash jarayonida foydalanadigan asosiy vositalar va ko'nikmalar</p>
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <!-- GIT SKILL CARD -->
+                    <div class="col">
+                        <div class="tool-card git-card" style="
+                            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+                            border-radius: 20px;
+                            padding: 30px;
+                            box-shadow: 
+                                0 15px 35px rgba(240, 80, 50, 0.1),
+                                0 5px 15px rgba(0,0,0,0.05);
+                            height: 100%;
+                            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                            border-left: 5px solid #f05032;
+                            position: relative;
+                            overflow: hidden;
+                        ">
+                            <!-- Animated Background -->
+                            <div class="card-bg-animation" style="
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                width: 150px;
+                                height: 150px;
+                                background: radial-gradient(circle, rgba(240, 80, 50, 0.1) 0%, transparent 70%);
+                                border-radius: 50%;
+                                animation: pulse 4s infinite;
+                            "></div>
+                            
+                            <!-- Card Header -->
+                            <div class="tool-header d-flex align-items-center mb-4">
+                                <div class="tool-icon-wrapper" style="
+                                    position: relative;
+                                    width: 80px;
+                                    height: 80px;
+                                    background: linear-gradient(135deg, #f05032, #f14e32);
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    margin-right: 20px;
+                                    box-shadow: 0 10px 25px rgba(240, 80, 50, 0.3);
+                                ">
+                                    <i class="fab fa-git-alt fa-3x text-white"></i>
+                                    <div class="icon-ring" style="
+                                        position: absolute;
+                                        width: 100%;
+                                        height: 100%;
+                                        border: 2px solid rgba(240, 80, 50, 0.3);
+                                        border-radius: 50%;
+                                        animation: rotate 10s linear infinite;
+                                    "></div>
+                                </div>
+                                <div>
+                                    <h3 class="tool-title" style="
+                                        font-size: 1.6rem;
+                                        font-weight: 700;
+                                        margin-bottom: 5px;
+                                        color: #333;
+                                    ">Version Control</h3>
+                                    <p class="tool-subtitle" style="
+                                        color: #666;
+                                        font-size: 0.95rem;
+                                        display: flex;
+                                        align-items: center;
+                                    ">
+                                        <span class="badge" style="
+                                            background: rgba(240, 80, 50, 0.1);
+                                            color: #f05032;
+                                            padding: 3px 10px;
+                                            border-radius: 15px;
+                                            font-size: 0.8rem;
+                                            font-weight: 600;
+                                            margin-right: 10px;
+                                        ">Advanced Level</span>
+                                        <i class="fas fa-star" style="color: #ffd700; margin-right: 2px;"></i>
+                                        <i class="fas fa-star" style="color: #ffd700; margin-right: 2px;"></i>
+                                        <i class="fas fa-star" style="color: #ffd700;"></i>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Git Commands Visualization -->
+                            <div class="git-commands mb-4" style="
+                                background: rgba(240, 80, 50, 0.05);
+                                border-radius: 15px;
+                                padding: 20px;
+                                margin-bottom: 20px;
+                                border: 1px solid rgba(240, 80, 50, 0.1);
+                            ">
+                                <h5 style="
+                                    font-size: 0.9rem;
+                                    font-weight: 600;
+                                    color: #f05032;
+                                    margin-bottom: 15px;
+                                    display: flex;
+                                    align-items: center;
+                                ">
+                                    <i class="fas fa-terminal me-2"></i>Command Mastery
+                                </h5>
+                                <div class="commands-grid" style="
+                                    display: grid;
+                                    grid-template-columns: repeat(2, 1fr);
+                                    gap: 10px;
+                                ">
+                                    <div class="command-item" style="
+                                        background: white;
+                                        padding: 8px 12px;
+                                        border-radius: 10px;
+                                        font-family: 'Monaco', 'Courier New', monospace;
+                                        font-size: 0.8rem;
+                                        color: #333;
+                                        border-left: 3px solid #f05032;
+                                    ">
+                                        <span style="color: #f05032;">$</span> git commit -m
+                                    </div>
+                                    <div class="command-item" style="
+                                        background: white;
+                                        padding: 8px 12px;
+                                        border-radius: 10px;
+                                        font-family: 'Monaco', 'Courier New', monospace;
+                                        font-size: 0.8rem;
+                                        color: #333;
+                                        border-left: 3px solid #f05032;
+                                    ">
+                                        <span style="color: #f05032;">$</span> git push origin
+                                    </div>
+                                    <div class="command-item" style="
+                                        background: white;
+                                        padding: 8px 12px;
+                                        border-radius: 10px;
+                                        font-family: 'Monaco', 'Courier New', monospace;
+                                        font-size: 0.8rem;
+                                        color: #333;
+                                        border-left: 3px solid #f05032;
+                                    ">
+                                        <span style="color: #f05032;">$</span> git merge
+                                    </div>
+                                    <div class="command-item" style="
+                                        background: white;
+                                        padding: 8px 12px;
+                                        border-radius: 10px;
+                                        font-family: 'Monaco', 'Courier New', monospace;
+                                        font-size: 0.8rem;
+                                        color: #333;
+                                        border-left: 3px solid #f05032;
+                                    ">
+                                        <span style="color: #f05032;">$</span> git rebase
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Git Features -->
+                            <div class="git-features">
+                                <div class="row text-center">
+                                    <div class="col-6 mb-3">
+                                        <div class="feature-item" style="
+                                            background: white;
+                                            padding: 15px;
+                                            border-radius: 12px;
+                                            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                                        ">
+                                            <div class="feature-icon mb-2" style="
+                                                width: 40px;
+                                                height: 40px;
+                                                background: linear-gradient(135deg, #f05032, #ff6b6b);
+                                                border-radius: 50%;
+                                                display: inline-flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                color: white;
+                                            ">
+                                                <i class="fas fa-code-branch"></i>
+                                            </div>
+                                            <h6 style="
+                                                font-size: 0.85rem;
+                                                font-weight: 600;
+                                                margin-bottom: 5px;
+                                                color: #333;
+                                            ">Branching</h6>
+                                            <p style="
+                                                font-size: 0.75rem;
+                                                color: #666;
+                                                margin-bottom: 0;
+                                            ">Feature branches, PRs</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="feature-item" style="
+                                            background: white;
+                                            padding: 15px;
+                                            border-radius: 12px;
+                                            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                                        ">
+                                            <div class="feature-icon mb-2" style="
+                                                width: 40px;
+                                                height: 40px;
+                                                background: linear-gradient(135deg, #f05032, #ff6b6b);
+                                                border-radius: 50%;
+                                                display: inline-flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                color: white;
+                                            ">
+                                                <i class="fas fa-history"></i>
+                                            </div>
+                                            <h6 style="
+                                                font-size: 0.85rem;
+                                                font-weight: 600;
+                                                margin-bottom: 5px;
+                                                color: #333;
+                                            ">Version History</h6>
+                                            <p style="
+                                                font-size: 0.75rem;
+                                                color: #666;
+                                                margin-bottom: 0;
+                                            ">Commit history, rollback</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="feature-item" style="
+                                            background: white;
+                                            padding: 15px;
+                                            border-radius: 12px;
+                                            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                                        ">
+                                            <div class="feature-icon mb-2" style="
+                                                width: 40px;
+                                                height: 40px;
+                                                background: linear-gradient(135deg, #f05032, #ff6b6b);
+                                                border-radius: 50%;
+                                                display: inline-flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                color: white;
+                                            ">
+                                                <i class="fab fa-github"></i>
+                                            </div>
+                                            <h6 style="
+                                                font-size: 0.85rem;
+                                                font-weight: 600;
+                                                margin-bottom: 5px;
+                                                color: #333;
+                                            ">GitHub/GitLab</h6>
+                                            <p style="
+                                                font-size: 0.75rem;
+                                                color: #666;
+                                                margin-bottom: 0;
+                                            ">CI/CD, Issues, Wiki</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="feature-item" style="
+                                            background: white;
+                                            padding: 15px;
+                                            border-radius: 12px;
+                                            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                                        ">
+                                            <div class="feature-icon mb-2" style="
+                                                width: 40px;
+                                                height: 40px;
+                                                background: linear-gradient(135deg, #f05032, #ff6b6b);
+                                                border-radius: 50%;
+                                                display: inline-flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                color: white;
+                                            ">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                            <h6 style="
+                                                font-size: 0.85rem;
+                                                font-weight: 600;
+                                                margin-bottom: 5px;
+                                                color: #333;
+                                            ">Team Workflow</h6>
+                                            <p style="
+                                                font-size: 0.75rem;
+                                                color: #666;
+                                                margin-bottom: 0;
+                                            ">Collaboration, Reviews</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LINUX SKILL CARD -->
+                    <div class="col">
+                        <div class="tool-card linux-card" style="
+                            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+                            border-radius: 20px;
+                            padding: 30px;
+                            box-shadow: 
+                                0 15px 35px rgba(23, 147, 209, 0.1),
+                                0 5px 15px rgba(0,0,0,0.05);
+                            height: 100%;
+                            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                            border-left: 5px solid #1793d1;
+                            position: relative;
+                            overflow: hidden;
+                        ">
+                            <!-- Animated Background -->
+                            <div class="card-bg-animation" style="
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                width: 150px;
+                                height: 150px;
+                                background: radial-gradient(circle, rgba(23, 147, 209, 0.1) 0%, transparent 70%);
+                                border-radius: 50%;
+                                animation: pulse 4s infinite 0.5s;
+                            "></div>
+                            
+                            <!-- Card Header -->
+                            <div class="tool-header d-flex align-items-center mb-4">
+                                <div class="tool-icon-wrapper" style="
+                                    position: relative;
+                                    width: 80px;
+                                    height: 80px;
+                                    background: linear-gradient(135deg, #1793d1, #1a73e8);
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    margin-right: 20px;
+                                    box-shadow: 0 10px 25px rgba(23, 147, 209, 0.3);
+                                ">
+                                    <i class="fab fa-linux fa-3x text-white"></i>
+                                    <div class="icon-ring" style="
+                                        position: absolute;
+                                        width: 100%;
+                                        height: 100%;
+                                        border: 2px solid rgba(23, 147, 209, 0.3);
+                                        border-radius: 50%;
+                                        animation: rotate 10s linear infinite reverse;
+                                    "></div>
+                                </div>
+                                <div>
+                                    <h3 class="tool-title" style="
+                                        font-size: 1.6rem;
+                                        font-weight: 700;
+                                        margin-bottom: 5px;
+                                        color: #333;
+                                    ">Linux & Server</h3>
+                                    <p class="tool-subtitle" style="
+                                        color: #666;
+                                        font-size: 0.95rem;
+                                        display: flex;
+                                        align-items: center;
+                                    ">
+                                        <span class="badge" style="
+                                            background: rgba(23, 147, 209, 0.1);
+                                            color: #1793d1;
+                                            padding: 3px 10px;
+                                            border-radius: 15px;
+                                            font-size: 0.8rem;
+                                            font-weight: 600;
+                                            margin-right: 10px;
+                                        ">Intermediate Level</span>
+                                        <i class="fas fa-star" style="color: #ffd700; margin-right: 2px;"></i>
+                                        <i class="fas fa-star" style="color: #ffd700; margin-right: 2px;"></i>
+                                        <i class="far fa-star" style="color: #ccc;"></i>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Terminal Visualization -->
+                            <div class="terminal-visual mb-4" style="
+                                background: #1e1e1e;
+                                border-radius: 15px;
+                                padding: 20px;
+                                margin-bottom: 20px;
+                                border: 1px solid #333;
+                                font-family: 'Monaco', 'Courier New', monospace;
+                                color: #00ff00;
+                                font-size: 0.9rem;
+                                line-height: 1.6;
+                                position: relative;
+                                overflow: hidden;
+                            ">
+                                <!-- Terminal Header -->
+                                <div class="terminal-header" style="
+                                    display: flex;
+                                    align-items: center;
+                                    margin-bottom: 15px;
+                                    padding-bottom: 10px;
+                                    border-bottom: 1px solid #333;
+                                ">
+                                    <div class="terminal-dots" style="display: flex; gap: 8px; margin-right: 15px;">
+                                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56;"></span>
+                                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e;"></span>
+                                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #27ca3f;"></span>
+                                    </div>
+                                    <span style="color: #ccc; font-size: 0.8rem;">bash — muhammadziyo@server</span>
+                                </div>
+                                
+                                <!-- Terminal Content -->
+                                <div class="terminal-content">
+                                    <div style="margin-bottom: 10px;">
+                                        <span style="color: #00ff00;">$</span> 
+                                        <span style="color: white;">sudo apt update && sudo apt upgrade</span>
+                                    </div>
+                                    <div style="margin-bottom: 10px;">
+                                        <span style="color: #00ff00;">$</span> 
+                                        <span style="color: white;">systemctl status nginx</span>
+                                    </div>
+                                    <div style="margin-bottom: 10px;">
+                                        <span style="color: #00ff00;">$</span> 
+                                        <span style="color: white;">chmod +x script.sh</span>
+                                    </div>
+                                    <div>
+                                        <span style="color: #00ff00;">$</span> 
+                                        <span style="color: white;">tail -f /var/log/nginx/access.log</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Cursor Blink -->
+                                <div class="cursor" style="
+                                    display: inline-block;
+                                    width: 8px;
+                                    height: 16px;
+                                    background: #00ff00;
+                                    margin-left: 5px;
+                                    animation: blink 1s infinite;
+                                    vertical-align: middle;
+                                "></div>
+                            </div>
+
+                            <!-- Linux Skills -->
+                            <div class="linux-skills">
+                                <h5 style="
+                                    font-size: 0.9rem;
+                                    font-weight: 600;
+                                    color: #1793d1;
+                                    margin-bottom: 15px;
+                                    display: flex;
+                                    align-items: center;
+                                ">
+                                    <i class="fas fa-server me-2"></i>Server Management Skills
+                                </h5>
+                                <div class="skills-grid" style="
+                                    display: grid;
+                                    grid-template-columns: repeat(2, 1fr);
+                                    gap: 12px;
+                                ">
+                                    <div class="skill-item" style="
+                                        background: rgba(23, 147, 209, 0.05);
+                                        padding: 12px;
+                                        border-radius: 10px;
+                                        border-left: 3px solid #1793d1;
+                                    ">
+                                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                            <div style="
+                                                width: 30px;
+                                                height: 30px;
+                                                background: #1793d1;
+                                                border-radius: 50%;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                margin-right: 10px;
+                                                color: white;
+                                                font-size: 0.8rem;
+                                            ">
+                                                <i class="fab fa-ubuntu"></i>
+                                            </div>
+                                            <h6 style="
+                                                font-size: 0.85rem;
+                                                font-weight: 600;
+                                                margin-bottom: 0;
+                                                color: #333;
+                                            ">Ubuntu/CentOS</h6>
+                                        </div>
+                                        <p style="
+                                            font-size: 0.75rem;
+                                            color: #666;
+                                            margin-bottom: 0;
+                                        ">Server setup & management</p>
+                                    </div>
+                                    
+                                    <div class="skill-item" style="
+                                        background: rgba(23, 147, 209, 0.05);
+                                        padding: 12px;
+                                        border-radius: 10px;
+                                        border-left: 3px solid #1793d1;
+                                    ">
+                                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                            <div style="
+                                                width: 30px;
+                                                height: 30px;
+                                                background: #1793d1;
+                                                border-radius: 50%;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                margin-right: 10px;
+                                                color: white;
+                                                font-size: 0.8rem;
+                                            ">
+                                                <i class="fas fa-terminal"></i>
+                                            </div>
+                                            <h6 style="
+                                                font-size: 0.85rem;
+                                                font-weight: 600;
+                                                margin-bottom: 0;
+                                                color: #333;
+                                            ">Bash Scripting</h6>
+                                        </div>
+                                        <p style="
+                                            font-size: 0.75rem;
+                                            color: #666;
+                                            margin-bottom: 0;
+                                        ">Automation & scripting</p>
+                                    </div>
+                                    
+                                    <div class="skill-item" style="
+                                        background: rgba(23, 147, 209, 0.05);
+                                        padding: 12px;
+                                        border-radius: 10px;
+                                        border-left: 3px solid #1793d1;
+                                    ">
+                                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                            <div style="
+                                                width: 30px;
+                                                height: 30px;
+                                                background: #1793d1;
+                                                border-radius: 50%;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                margin-right: 10px;
+                                                color: white;
+                                                font-size: 0.8rem;
+                                            ">
+                                                <i class="fas fa-shield-alt"></i>
+                                            </div>
+                                            <h6 style="
+                                                font-size: 0.85rem;
+                                                font-weight: 600;
+                                                margin-bottom: 0;
+                                                color: #333;
+                                            ">Security & Permissions</h6>
+                                        </div>
+                                        <p style="
+                                            font-size: 0.75rem;
+                                            color: #666;
+                                            margin-bottom: 0;
+                                        ">SSH, firewall, users</p>
+                                    </div>
+                                    
+                                    <div class="skill-item" style="
+                                        background: rgba(23, 147, 209, 0.05);
+                                        padding: 12px;
+                                        border-radius: 10px;
+                                        border-left: 3px solid #1793d1;
+                                    ">
+                                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                            <div style="
+                                                width: 30px;
+                                                height: 30px;
+                                                background: #1793d1;
+                                                border-radius: 50%;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                margin-right: 10px;
+                                                color: white;
+                                                font-size: 0.8rem;
+                                            ">
+                                                <i class="fas fa-tachometer-alt"></i>
+                                            </div>
+                                            <h6 style="
+                                                font-size: 0.85rem;
+                                                font-weight: 600;
+                                                margin-bottom: 0;
+                                                color: #333;
+                                            ">Monitoring & Logs</h6>
+                                        </div>
+                                        <p style="
+                                            font-size: 0.75rem;
+                                            color: #666;
+                                            margin-bottom: 0;
+                                        ">Performance, debugging</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== ANIMATIONS & INTERACTIONS ========== -->
+        <style>
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Hover Effects */
+        .tool-card {
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.15),
+                0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+
+        .git-card:hover {
+            border-left-color: #ff6b6b;
+        }
+
+        .linux-card:hover {
+            border-left-color: #1a73e8;
+        }
+
+        /* Feature Items Hover */
+        .feature-item:hover, .skill-item:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+
+        /* Command Items Animation */
+        .command-item {
+            transition: all 0.3s ease;
+        }
+
+        .command-item:hover {
+            background: #f05032 !important;
+            color: white !important;
+            transform: translateX(5px);
+        }
+
+        /* Terminal Animation */
+        .terminal-visual:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tool-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .tool-icon-wrapper {
+                margin-right: 0 !important;
+                margin-bottom: 15px;
+            }
+            
+            .commands-grid,
+            .skills-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .git-features .row .col-6 {
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Mobile Touch Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .tool-card:hover {
+                transform: none !important;
+            }
+            
+            .tool-card:active {
+                transform: scale(0.98) !important;
+            }
+        }
+        </style>
+
+        <!-- ========== INTERACTIVE JAVASCRIPT ========== -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Git Card Interactions
+            const gitCard = document.querySelector('.git-card');
+            const linuxCard = document.querySelector('.linux-card');
+            
+            // Git Card Click
+            gitCard.addEventListener('click', function() {
+                const gitDetails = `
+        🚀 GIT VERSION CONTROL
+
+        📊 BILIM DARAJASI: Advanced (1+ yillik tajriba)
+
+        🎯 ASOSIY KO'NIKMALAR:
+        • Git commands (commit, push, pull, merge, rebase)
+        • Branching strategies (Git Flow, GitHub Flow)
+        • Pull Requests & Code Reviews
+        • Conflict resolution
+        • Git Hooks
+        • CI/CD Integration
+
+        🛠 FOYDALANILGAN:
+        • GitHub - 350+ repository
+        • GitLab - Team projects
+        • Bitbucket - Professional use
+        • Git Bash & GUI tools
+
+        💼 REAL LOYIHALAR:
+        • m_company-bots
+        • Car-service-bot
+                `;
+                
+                alert(gitDetails);
+            });
+            
+            // Linux Card Click
+            linuxCard.addEventListener('click', function() {
+                const linuxDetails = `
+        🐧 LINUX & SERVER MANAGEMENT
+
+        📊 BILIM DARAJASI: Intermediate (2+ yillik tajriba)
+
+        🎯 ASOSIY KO'NIKMALAR:
+        • Ubuntu Server 20.04/22.04 setup
+        • Bash scripting & automation
+        • User & permission management
+        • Process monitoring (htop, ps, top)
+        • Service management (systemd)
+        • Nginx/Apache configuration
+        • SSH & remote access
+        • Firewall (UFW) configuration
+
+        🖥 SERVER TURLARI:
+        • Development servers
+        • Production deployments
+        • Virtual machines
+        • Cloud instances (AWS EC2, DigitalOcean)
+
+        📈 REAL LOYIHALAR:
+        • Django production deployment
+        • Database server management
+        • Backup & restore scripts
+        • Server monitoring setup
+        • Security hardening
+                `;
+                
+                alert(linuxDetails);
+            });
+            
+            // Animate command items on hover
+            const commandItems = document.querySelectorAll('.command-item');
+            commandItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    const command = this.textContent.trim();
+                    this.title = `Click to copy: ${command}`;
+                });
+                
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const command = this.textContent.replace('$', '').trim();
+                    navigator.clipboard.writeText(command).then(() => {
+                        const originalText = this.textContent;
+                        this.textContent = '✓ Copied!';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 1000);
+                    });
+                });
+            });
+            
+            // Add typing effect to terminal
+            const terminalContent = document.querySelector('.terminal-content');
+            const commands = [
+                "sudo apt update && sudo apt upgrade",
+                "systemctl status nginx",
+                "chmod +x script.sh", 
+                "tail -f /var/log/nginx/access.log"
+            ];
+            
+            let currentCommand = 0;
+            let charIndex = 0;
+            
+            function typeCommand() {
+                if (currentCommand < commands.length) {
+                    const command = commands[currentCommand];
+                    
+                    if (charIndex < command.length) {
+                        // Add character
+                        const span = terminalContent.children[currentCommand].querySelector('span:nth-child(2)');
+                        if (span) {
+                            span.textContent = command.substring(0, charIndex + 1);
+                        }
+                        charIndex++;
+                        setTimeout(typeCommand, 50);
+                    } else {
+                        // Move to next command
+                        currentCommand++;
+                        charIndex = 0;
+                        setTimeout(typeCommand, 1000);
+                    }
+                } else {
+                    // Reset after all commands
+                    currentCommand = 0;
+                    charIndex = 0;
+                    setTimeout(typeCommand, 2000);
+                }
+            }
+            
+            // Start typing after 2 seconds
+            setTimeout(typeCommand, 2000);
+        });
+        </script>
+    </div>
+</section>
+
+<!-- ========== LATEST PROJECTS ========== -->
+<!-- ... (oldingi loyihalar kodi, lekin yangi dizayn bilan) ... -->
+
+<!-- ========== ANIMATIONS AND EFFECTS ========== -->
+<style>
+/* Button Hover Effects */
+.btn-cta-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.btn-cta-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: white;
+}
+
+/* Skill Card Hover */
+.skill-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes scrollWheel {
+    0% {
+        top: 10px;
+        opacity: 1;
+    }
+    100% {
+        top: 30px;
+        opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+@keyframes fillProgress {
+    from { width: 0%; }
+    to { width: attr(data-width); }
+}
+
+/* Typewriter Effect */
+.typewriter-text {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .profile-image-wrapper {
+        width: 300px !important;
+        height: 300px !important;
+    }
+    
+    .floating-icon {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.2rem !important;
+    }
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+</style>
+
+<!-- ========== JAVASCRIPT EFFECTS ========== -->
+<script>
+// Typewriter Effect
+const typewriterText = document.querySelector('.typewriter-text');
+const text = "Muhammadziyo";
+let charIndex = 0;
+
+function typeWriter() {
+    if (charIndex < text.length) {
+        typewriterText.textContent = text.substring(0, charIndex + 1);
+        charIndex++;
+        setTimeout(typeWriter, 100);
+    }
+}
+
+// Start typewriter when page loads
+window.addEventListener('load', typeWriter);
+
+// Counter Animation for Stats
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target + "+";
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current) + "+";
+        }
+    }, 30);
+}
+
+// Start counters when visible
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statNumbers = entry.target.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                animateCounter(stat, target);
+            });
+        }
+    });
+});
+
+// Observe quick stats section
+const quickStats = document.querySelector('.quick-stats');
+if (quickStats) {
+    observer.observe(quickStats);
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+</script>
+{% endblock %}

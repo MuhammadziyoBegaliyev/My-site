@@ -1,0 +1,100 @@
+
+
+/* 1. MOBILE (default - kichik ekranlar) */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* Mobile nav */
+.navbar-nav {
+    text-align: center;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+/* Card mobile */
+.card {
+    margin-bottom: 1rem;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Button mobile */
+.btn {
+    display: inline-block;
+    width: 100%;  /* Mobileda to'liq kenglik */
+    margin-bottom: 0.5rem;
+    padding: 12px 20px;
+    font-size: 16px; /* Touch uchun kattaroq */
+}
+
+/* Form mobile */
+.form-control {
+    font-size: 16px; /* iOS zoom bug'ini oldini olish */
+    height: 45px;
+}
+
+/* 2. TABLET (768px dan) */
+@media (min-width: 768px) {
+    body {
+        font-size: 17px;
+    }
+    
+    .container {
+        max-width: 720px;
+    }
+    
+    .btn {
+        width: auto; /* Tabletda auto */
+        margin-bottom: 0;
+    }
+    
+    .navbar-nav {
+        text-align: left;
+    }
+    
+    .card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* 3. DESKTOP (992px dan) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    body {
+        font-size: 18px;
+    }
+    
+    .hero {
+        padding: 6rem 0;
+    }
+}
+
+/* 4. LARGE DESKTOP (1200px dan) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
